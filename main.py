@@ -28,6 +28,8 @@ if __name__=='__main__':
         htlm_list = driver.find_element_by_css_selector("section.ui-search-results.ui-search-results--without-disclaimer");
         items_h2 = htlm_list.find_elements_by_css_selector("div.ui-search-result__wrapper");
 
+        print("\nResultados para la busqueda ",args.product,'\n');
+
         for item in items_h2:
             tiulo = item.find_element_by_css_selector('h2.ui-search-item__title');
             txt_titulo = tiulo.get_attribute('innerHTML');
@@ -35,10 +37,10 @@ if __name__=='__main__':
             txt_precio = precio.get_attribute('innerHTML');
             url = item.find_element_by_css_selector("a.ui-search-link");
             txt_url = url.get_attribute('href');
-            print(txt_titulo);
-            print(txt_precio);
-            print(txt_url);
-            print('*' * 15);
+            print("[+]Producto: ",txt_titulo);
+            print("[+]Precio: ",txt_precio);
+            print("[+]Url: ",txt_url);
+            print('*' * 15,'\n'*2);
 
         driver.close();
     else:
